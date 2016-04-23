@@ -9,16 +9,9 @@ import com.google.gson.Gson;
 import com.iit.client.model.Brand;
 import com.iit.client.net.Connection;
 import com.iit.client.ui.custom.JCheckBoxList;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 /**
  *
