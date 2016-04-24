@@ -146,6 +146,12 @@ public class AddEditBrands extends JFrame {
             }
         });
 
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         jButton3.setText("Edit Brand");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,7 +229,9 @@ public class AddEditBrands extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Gson g = new Gson();
+        String brand = jTextField1.getText();
+        if(!brand.isEmpty()){
+            Gson g = new Gson();
 //        JsonObject jo = new Gson().fromJson(s, JsonObject.class);
 //       
 //        String x = (jo.get("_embedded").getAsJsonObject().get("brands").getAsJsonArray().get(0)).toString();
@@ -231,13 +239,17 @@ public class AddEditBrands extends JFrame {
 //        System.out.println(b);
         
         Brand b = new Brand();
-        b.setName("Test Brand Name");
+        b.setName(brand);
         String json = g.toJson(b);
         try {        
             Connection.sendPost("http://localhost:8080/brands/", json);
         } catch (Exception ex) {
             Logger.getLogger(AddEditBrands.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }else{
+            JOptionPane.showMessageDialog(rootPane,"Invalid brand name");
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -245,12 +257,16 @@ public class AddEditBrands extends JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+       jTextField1.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
